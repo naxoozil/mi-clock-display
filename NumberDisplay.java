@@ -13,7 +13,8 @@ public class NumberDisplay
     private int display;
     private int limite;
     /**
-     * Constructor for objects of class NumberDisplay
+     * Constructor para objetos de la clase NumberDisplay
+     * Dar valor para fijar el limite.
      */
     public NumberDisplay(int limiteDisplay)
     {      
@@ -41,8 +42,25 @@ public class NumberDisplay
         return displ;
     }
     
+    /**
+     * Un método que devuelve el valor actual del display como entero 
+     */
     public int getValue()
     {
         return display;
+    }
+    
+    /**
+     *Metodo que incrementa en 1 al display y lo hace volver al principio si alcanza el límite  
+     */
+    public void increment()
+    {
+     int limiteT = limite - 1;
+     if (display >= limiteT){
+            display = 0;
+        }
+        else{ 
+            display++;
+     }
     }
 }
