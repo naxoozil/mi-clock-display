@@ -30,4 +30,14 @@ public class NumberDisplay
            display = valorActual;
        }
     }
+    
+    /**
+     * Un método que devuelve el valor actual del display en forma de cadena de 2 caracteres
+     */
+    public String getDisplayValue()
+    {
+        String DispAc = "%02d";
+        String displ = String.format(DispAc,display);
+        return displ;
+    }
 }
