@@ -40,4 +40,9 @@ public class NumberDisplay
         String displ = String.format(DispAc,display);
         return displ;
     }
+    
+    public int getValue()
+    {
+        return display;
+    }
 }
