@@ -7,13 +7,15 @@
  */
 public class ClockDisplay
 {
-    // instance variables - replace the example below with your own
     private NumberDisplay horas;
+    //variable horas
     private NumberDisplay minutos;
-    private String horaAc; 
+    //variable minutos 
+    private String horaAc;
+    //atributo de tipo string de 5 caracteres
 
     /**
-     * Constructor for objects of class ClockDisplay
+     * Constructor that fixes the time to 00:00
      */
     public ClockDisplay()
     {
@@ -25,7 +27,7 @@ public class ClockDisplay
     }
 
     /**
-     * 
+     * Constructor that fixes the hour to the time that you want
      */
     public ClockDisplay(int horas2, int minutos2)
     {
@@ -36,6 +38,9 @@ public class ClockDisplay
         horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
     
+    /**
+     * Method that fixes a time that you want  
+     */
     public void setTime (int horasAc, int minutosAc)
     {
         horas.setValue(horasAc);
@@ -43,8 +48,27 @@ public class ClockDisplay
         horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }  
     
+    /**
+     * Method that shows you the time
+     */
     public String getTime()
     {
         return horaAc;
+    }
+    
+    /**
+     * Method that sums up a minute in the clock
+     */
+    public void timeTick()
+    {
+        if (minutos.getValue() == 59){
+            minutos.increment();
+            horas.increment();
+            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        }
+        else{
+            minutos.increment();
+            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        }
     }
 }
