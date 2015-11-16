@@ -33,6 +33,13 @@ public class ClockDisplay
         horas.setValue(horas2);
         minutos = new NumberDisplay(60);
         minutos.setValue(minutos2);
-        horaAc = horas.getDisplayValue() + ":" +minutos.getDisplayValue();
+        horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
+    
+    public void setTime (int horasAc, int minutosAc)
+    {
+        horas.setValue(horasAc);
+        minutos.setValue(minutosAc);
+        horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+    }  
 }
