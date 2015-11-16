@@ -42,4 +42,9 @@ public class ClockDisplay
         minutos.setValue(minutosAc);
         horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }  
+    
+    public String getTime()
+    {
+        return horaAc;
+    }
 }

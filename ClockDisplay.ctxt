@@ -7,4 +7,6 @@ comment1.target=ClockDisplay(int,\ int)
 comment1.text=\r\n\ \r\n
 comment2.params=horasAc\ minutosAc
 comment2.target=void\ setTime(int,\ int)
-numComments=3
+comment3.params=
+comment3.target=java.lang.String\ getTime()
+numComments=4
