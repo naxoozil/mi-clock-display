@@ -13,39 +13,55 @@ public class ClockDisplay
     //variable minutos 
     private String horaAc;
     //atributo de tipo string de 5 caracteres
-
+    private String amOPm;
     /**
      * Constructor that fixes the time to 00:00
      */
     public ClockDisplay()
     {
         horas = new NumberDisplay(24);
-        horas.setValue(0);
         minutos = new NumberDisplay(60);
         minutos.setValue(0);
-        horaAc = "00:00";
+        horaAc = "12:00 am";
     }
 
     /**
      * Constructor that fixes the hour to the time that you want
      */
-    public ClockDisplay(int horas2, int minutos2)
+    public ClockDisplay(int horas2, int minutos2, String amOPmAc)
     {
+        if (horas2 > 12){
+            horas2 = horas2 - 12;
+            amOPmAc = "pm";
+        }    
         horas = new NumberDisplay(24);
         horas.setValue(horas2);
         minutos = new NumberDisplay(60);
         minutos.setValue(minutos2);
-        horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        amOPm = amOPmAc;
+        horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + amOPm;
     }
     
     /**
      * Method that fixes a time that you want  
      */
-    public void setTime (int horasAc, int minutosAc)
+    public void setTime (int horas3, int minutos3)
     {
-        horas.setValue(horasAc);
-        minutos.setValue(minutosAc);
-        horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        if (horas3 > 12){
+            horas3 = horas3 - 12;
+            minutos.setValue(minutos3);
+            amOPm = "pm";
+        }
+        else if (horas3 == 12 && minutos3 == 0){
+            horas.setValue(horas3);
+            minutos.setValue(minutos3);
+            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " m";
+        }
+        else if (horas3 < 12){
+            horas.setValue(horas3);
+            minutos.setValue(minutos3);
+            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " am";
+        }
     }  
     
     /**
@@ -61,14 +77,16 @@ public class ClockDisplay
      */
     public void timeTick()
     {
-        if (minutos.getValue() == 59){
+        if (minutos3 == 59 && horas3 < 11 ) {
             minutos.increment();
             horas.increment();
-            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + amOPm ;
         }
-        else{
-            minutos.increment();
-            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        else if( minutos3() == 59 && horas3 = 11){
+            horas++;
+            minutos = 0;
+            horaAc = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " m";
         }
     }
-}
+    }
+
